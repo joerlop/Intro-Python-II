@@ -42,20 +42,44 @@ room['treasure'].s_to = room['narrow']
 
 player1 = Player("Jonas", room['outside'])
 
-print(room['outside'].n_to)
+print(player1.room.n_to)
 
 for i in range(3):
     if (i == 0):
         print(f"Your current room is {player1.room.name}")
+
     elif (i == 1):
         print(f"{player1.room.description}")
+
     else:
         direction = input("Where do you want to go?: ")
+
         if (direction == "q"):
             exit
-        elif (f"{player1.room}.{direction}_to"):
-            player1.room = player1.room.{direction}_to
-
+        elif (direction == "n"):
+            if (hasattr(player1.room, "n_to")):
+                player1.room = player1.room.n_to
+                print(f"Your current room is {player1.room}")
+            else:
+                print("You cannot move in that direction!")
+        elif (direction == "s"):
+            if (hasattr(player1.room, "s_to")):
+                player1.room = player1.room.s_to
+                print(f"Your current room is {player1.room}")
+            else:
+                print("You cannot move in that direction!")
+        elif (direction == "w"):
+            if (hasattr(player1.room, "w_to")):
+                player1.room = player1.room.w_to
+                print(f"Your current room is {player1.room}")
+            else:
+                print("You cannot move in that direction!")
+        elif (direction == "e"):
+            if (hasattr(player1.room, "e_to")):
+                player1.room = player1.room.e_to
+                print(f"Your current room is {player1.room}")
+            else:
+                print("You cannot move in that direction!")
 
 # Write a loop that:
 #

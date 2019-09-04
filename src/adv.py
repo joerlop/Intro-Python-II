@@ -42,44 +42,35 @@ room['treasure'].s_to = room['narrow']
 
 player1 = Player("Jonas", room['outside'])
 
-print(player1.room.n_to)
+direction = "initial"
 
-for i in range(3):
-    if (i == 0):
-        print(f"Your current room is {player1.room.name}")
+while (direction != "q"):
+    print(f"Your current room is {player1.room.name}")
+    print(f"{player1.room.description}")
 
-    elif (i == 1):
-        print(f"{player1.room.description}")
-
-    else:
-        direction = input("Where do you want to go?: ")
-
-        if (direction == "q"):
-            exit
-        elif (direction == "n"):
-            if (hasattr(player1.room, "n_to")):
-                player1.room = player1.room.n_to
-                print(f"Your current room is {player1.room}")
-            else:
-                print("You cannot move in that direction!")
-        elif (direction == "s"):
-            if (hasattr(player1.room, "s_to")):
-                player1.room = player1.room.s_to
-                print(f"Your current room is {player1.room}")
-            else:
-                print("You cannot move in that direction!")
-        elif (direction == "w"):
-            if (hasattr(player1.room, "w_to")):
-                player1.room = player1.room.w_to
-                print(f"Your current room is {player1.room}")
-            else:
-                print("You cannot move in that direction!")
-        elif (direction == "e"):
-            if (hasattr(player1.room, "e_to")):
-                player1.room = player1.room.e_to
-                print(f"Your current room is {player1.room}")
-            else:
-                print("You cannot move in that direction!")
+    direction = input("Where do you want to go?: ")
+    if (direction == "q"):
+        exit
+    elif (direction == "n"):
+        if (hasattr(player1.room, "n_to")):
+            player1.room = player1.room.n_to
+        else:
+            print("You cannot move in that direction!")
+    elif (direction == "s"):
+        if (hasattr(player1.room, "s_to")):
+            player1.room = player1.room.s_to
+        else:
+            print("You cannot move in that direction!")
+    elif (direction == "w"):
+        if (hasattr(player1.room, "w_to")):
+            player1.room = player1.room.w_to
+        else:
+            print("You cannot move in that direction!")
+    elif (direction == "e"):
+        if (hasattr(player1.room, "e_to")):
+            player1.room = player1.room.e_to
+        else:
+            print("You cannot move in that direction!")
 
 # Write a loop that:
 #

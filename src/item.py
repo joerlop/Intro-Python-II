@@ -8,3 +8,6 @@ class Item:
     
     def __repr__(self):
         return f'Item({repr(self.name)})'
+
+    def on_take(self):
+        print(f'You have picked up {self.name}')

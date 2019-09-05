@@ -108,14 +108,18 @@ while (direction != "q"):
                 for i in player1.room.items:
                     
                     count = 0
+                    found = False
 
                     if i.name == directionList[1]:
-                        player1.items.append(directionList[1])
-                        player1.room.items.pop(count)
+                        player1.items.append(i)
+                        player1.items[-1].on_take()
+                        player1.room.items.pop(count)    
+                        found = True
                     
                     count += 1
-    
-            print("*** That item is not in this room!")
+
+            if found == False:
+                print("*** That item is not in this room!")
 
 
 # Write a loop that:

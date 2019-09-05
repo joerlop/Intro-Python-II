@@ -52,22 +52,22 @@ while (direction != "q"):
     if (direction == "q"):
         exit
     elif (direction == "n"):
-        if (hasattr(player1.room, "n_to")):
+        if (player1.room.n_to is not None):
             player1.room = player1.room.n_to
         else:
             print("You cannot move in that direction!")
     elif (direction == "s"):
-        if (hasattr(player1.room, "s_to")):
+        if (player1.room.s_to is not None):
             player1.room = player1.room.s_to
         else:
             print("You cannot move in that direction!")
     elif (direction == "w"):
-        if (hasattr(player1.room, "w_to")):
+        if (player1.room.w_to is not None):
             player1.room = player1.room.w_to
         else:
             print("You cannot move in that direction!")
     elif (direction == "e"):
-        if (hasattr(player1.room, "e_to")):
+        if (player1.room.e_to is not None):
             player1.room = player1.room.e_to
         else:
             print("You cannot move in that direction!")

@@ -1,5 +1,6 @@
 from room import Room
 from player import Player
+from item import Item
 
 # Declare all the rooms
 
@@ -34,12 +35,12 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
-room["outside"].items.append("Sword")
-room["outside"].items.append("Crystal ball")
-room["outside"].items.append("TV")
-room["outside"].items.append("Gameboy")
-room["narrow"].items.append("Yellow stone")
-room["treasure"].items.append("Gold coins")
+room["outside"].items.append(Item("Sword", "Sharp"))
+room["outside"].items.append(Item("Crystal ball", "Does it work?"))
+room["foyer"].items.append(Item("TV", "Big one"))
+room["overlook"].items.append(Item("Gameboy", "lol"))
+room["narrow"].items.append(Item("Yellow stone", "Yeah!"))
+room["treasure"].items.append(Item("Gold coins", "Plenty"))
 
 #
 # Main
@@ -59,30 +60,63 @@ while (direction != "q"):
         print("There are no items in this room... :(")
     else:
         print(f"The items in this room are: {player1.room.items}")
+    
+    if (len(player1.items) == 0):
+        print("You currently have no items... :(")
+    else:
+        print(f"Your items are: {player1.items}")
 
-    direction = input("Where do you want to go?: ")
-    if (direction == "q"):
-        exit
-    elif (direction == "n"):
-        if (player1.room.n_to is not None):
-            player1.room = player1.room.n_to
-        else:
-            print("*** You cannot move in that direction!")
-    elif (direction == "s"):
-        if (player1.room.s_to is not None):
-            player1.room = player1.room.s_to
-        else:
-            print("*** You cannot move in that direction!")
-    elif (direction == "w"):
-        if (player1.room.w_to is not None):
-            player1.room = player1.room.w_to
-        else:
-            print("*** You cannot move in that direction!")
-    elif (direction == "e"):
-        if (player1.room.e_to is not None):
-            player1.room = player1.room.e_to
-        else:
-            print("*** You cannot move in that direction!")
+    direction = input("What do you want to do?: ")
+    directionList = direction.split()
+
+    if len(directionList) == 1:
+
+        if (direction == "q"):
+            exit
+        
+        elif (direction == "n"):
+            if (player1.room.n_to is not None):
+                player1.room = player1.room.n_to
+            else:
+                print("*** You cannot move in that direction!")
+        
+        elif (direction == "s"):
+            if (player1.room.s_to is not None):
+                player1.room = player1.room.s_to
+            else:
+                print("*** You cannot move in that direction!")
+        
+        elif (direction == "w"):
+            if (player1.room.w_to is not None):
+                player1.room = player1.room.w_to
+            else:
+                print("*** You cannot move in that direction!")
+        
+        elif (direction == "e"):
+            if (player1.room.e_to is not None):
+                player1.room = player1.room.e_to
+            else:
+                print("*** You cannot move in that direction!")
+
+    elif len(directionList) == 2:
+
+        if directionList[0] == "get" or directionList[0] == "take":
+            if len(player1.room.items) == 0:
+                print("***** This room has no items!")
+            
+            else:
+                for i in player1.room.items:
+                    
+                    count = 0
+
+                    if i.name == directionList[1]:
+                        player1.items.append(directionList[1])
+                        player1.room.items.pop(count)
+                    
+                    count += 1
+    
+            print("*** That item is not in this room!")
+
 
 # Write a loop that:
 #

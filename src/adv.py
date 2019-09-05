@@ -34,6 +34,13 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
+room["outside"].items.append("Sword")
+room["outside"].items.append("Crystal ball")
+room["outside"].items.append("TV")
+room["outside"].items.append("Gameboy")
+room["narrow"].items.append("Yellow stone")
+room["treasure"].items.append("Gold coins")
+
 #
 # Main
 #

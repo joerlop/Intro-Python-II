@@ -48,6 +48,11 @@ while (direction != "q"):
     print(f"Your current room is {player1.room.name}")
     print(f"{player1.room.description}")
 
+    if (len(player1.room.items) == 0):
+        print("There are no items in this room... :(")
+    else:
+        print(f"The items in this room are: {player1.room.items}")
+
     direction = input("Where do you want to go?: ")
     if (direction == "q"):
         exit
@@ -55,22 +60,22 @@ while (direction != "q"):
         if (player1.room.n_to is not None):
             player1.room = player1.room.n_to
         else:
-            print("You cannot move in that direction!")
+            print("*** You cannot move in that direction!")
     elif (direction == "s"):
         if (player1.room.s_to is not None):
             player1.room = player1.room.s_to
         else:
-            print("You cannot move in that direction!")
+            print("*** You cannot move in that direction!")
     elif (direction == "w"):
         if (player1.room.w_to is not None):
             player1.room = player1.room.w_to
         else:
-            print("You cannot move in that direction!")
+            print("*** You cannot move in that direction!")
     elif (direction == "e"):
         if (player1.room.e_to is not None):
             player1.room = player1.room.e_to
         else:
-            print("You cannot move in that direction!")
+            print("*** You cannot move in that direction!")
 
 # Write a loop that:
 #
